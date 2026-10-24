@@ -9,7 +9,7 @@
 [ -z $IS_CI ] && IS_CI=false
 [ -z $DO_CLEAN ] && DO_CLEAN=false
 [ -z $LTO ] && LTO=none
-[ -z $DEFAULT_KSU_REPO ] && DEFAULT_KSU_REPO="https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next/kernel/setup.sh"
+[ -z $DEFAULT_KSU_REPO ] && DEFAULT_KSU_REPO="https://raw.githubusercontent.com/KernelSU-Next/KernelSU-Next/dev/kernel/setup.sh"
 [ -z $SUSFS_KSU_REPO ] && SUSFS_KSU_REPO="https://raw.githubusercontent.com/rifsxd/KernelSU-Next/next/kernel/setup.sh"
 [ -z $DEVICE ] && DEVICE="Unknown"
 
@@ -151,7 +151,7 @@ fi
 if [ "$SUSFS4KSU" = "true" ]; then
 	curl -LSs $DEFAULT_KSU_REPO | bash -s legacy_susfs
 else
-    [ "$KERNELSU" = "true" ] && curl -LSs $DEFAULT_KSU_REPO | bash -s legacy || pr_info "KernelSU Next is disabled. Add 'KERNELSU=true' or 'export KERNELSU=true' to enable"
+    [ "$KERNELSU" = "true" ] && curl -LSs $DEFAULT_KSU_REPO | bash -s v3.4.0-legacy || pr_info "KernelSU Next is disabled. Add 'KERNELSU=true' or 'export KERNELSU=true' to enable"
 fi
 
 BUILD_TARGET="$1"
