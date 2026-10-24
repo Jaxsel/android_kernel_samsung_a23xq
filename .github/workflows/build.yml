@@ -17,12 +17,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        variant: ["Vanilla", "KernelSU Next", "KernelSU Next + SUSFS"] # Primitive values only
+        variant: ["KernelSU Next"] # Primitive values only
 
     steps:
     - uses: actions/checkout@v4
       with:
-        repository: wonderful-mobile/android_kernel_samsung_a23xq
+        repository: ${{ github.repository }}
         path: kernel_root
         ref: ${{ github.event.inputs.BRANCH }}
         show-progress: false
