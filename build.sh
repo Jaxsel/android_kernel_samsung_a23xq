@@ -279,6 +279,14 @@ post_build() {
 		UTSRELEASE=$(./getutsrel)
 		sed -i "s/kernel\.string=.*/kernel.string=$UTSRELEASE/" "$AK3/anykernel.sh"
 		sed -i "s/BLOCK=.*/BLOCK=\/dev\/block\/bootdevice\/by-name\/boot;/" "$AK3/anykernel.sh"
+		sed -i "s/do\.devicecheck=.*/do.devicecheck=0/" "$AK3/anykernel.sh"
+		sed -i "s/do\.systemless=.*/do.systemless=0/" "$AK3/anykernel.sh"
+		sed -i "s/device\.name1=.*/device.name1=/" "$AK3/anykernel.sh"
+		sed -i "s/device\.name2=.*/device.name2=/" "$AK3/anykernel.sh"
+		sed -i "s/device\.name3=.*/device.name3=/" "$AK3/anykernel.sh"
+		sed -i "s/device\.name4=.*/device.name4=/" "$AK3/anykernel.sh"
+		sed -i "s/device\.name5=.*/device.name5=/" "$AK3/anykernel.sh"
+		sed -i "/init\.rc/,/write_boot/ { /write_boot/!d; }" "$AK3/anykernel.sh"
 		cp $IMAGE $AK3
 		cd $AK3
 		zip -r9 ../`echo $ZIP_FMT`.zip *
